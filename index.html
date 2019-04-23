@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>红包雨</title>
+    <script src="staitc/js/jquery-1.9.1.min.js"></script>
+    <script src="staitc/js/snowfall.jquery.js"></script>
+</head>
+<style>
+    body,
+    html {
+        height: 100%;
+    }
+    
+    * {
+        margin: 0;
+        padding: 0;
+    }
+</style>
+
+<body>
+    <div id="start">开始</div>
+</body>
+<script src="staitc/js/hb.js"></script>
+
+<script>
+    var names = new Snows({
+        images: "./staitc/assets/hongbao.png",
+        flakeCount: 10,
+        flakeIndex: 10000,
+        minSize: 50,
+        maxSize: 100,
+        minSpeed: 1,
+        maxSpeed: 5,
+    })
+
+    document.getElementById("start").onclick = function() {
+        names.start()
+    }
+
+
+    function SnowsClick() {
+        console.log(11)
+    }
+    // $(document).snowfall({
+    //     image: "./staitc/assets/hongbao.png",
+    //     minSize: 50,
+    //     maxSize: 100,
+    //     flakeCount: 10,
+    // })
+</script>
+
+</html>
