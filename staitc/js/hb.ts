@@ -6,12 +6,15 @@ let random = (min, max) => {
   return Math.round(min + Math.random() * (max - min));
 };
 
+window.addEventListener("resize", function () {
+  elWidth = document.body.offsetWidth
+  elHeight = document.body.offsetHeight
+}, false)
 class Snows {
   constructor(options) {
     this.options = { ...this.options, ...options }
 
   }
-
   public options = {
     images: "",
     flakeCount: 35,
@@ -22,7 +25,6 @@ class Snows {
     maxSize: 100,
     minSpeed: 1,
     maxSpeed: 5,
-
   }
 
   private nowsArr: Array<Drops> = []
@@ -91,7 +93,15 @@ class Drops {
       this.flake.style.height = this.obj._height + 'px'
     }
     this.cssfun()
-    document.body.append(this.flake)
+    if(this.options.el){
+        let el= document.getElementById(this.options.el)
+        if(el){
+          el.append(this.flake)
+        }
+    }else{
+      document.body.append(this.flake)
+    }
+    
     this.flake.addEventListener("click", this.change, false);
 
   }

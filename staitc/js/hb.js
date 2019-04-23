@@ -15,6 +15,10 @@ var elHeight = document.body.offsetHeight;
 var random = function (min, max) {
     return Math.round(min + Math.random() * (max - min));
 };
+window.addEventListener("resize", function () {
+    elWidth = document.body.offsetWidth;
+    elHeight = document.body.offsetHeight;
+}, false);
 var Snows = /** @class */ (function () {
     function Snows(options) {
         this.options = {
@@ -89,7 +93,15 @@ var Drops = /** @class */ (function () {
             this.flake.style.height = this.obj._height + 'px';
         }
         this.cssfun();
-        document.body.append(this.flake);
+        if (this.options.el) {
+            var el = document.getElementById(this.options.el);
+            if (el) {
+                el.append(this.flake);
+            }
+        }
+        else {
+            document.body.append(this.flake);
+        }
         this.flake.addEventListener("click", this.change, false);
     };
     Drops.prototype.cssfun = function () {
