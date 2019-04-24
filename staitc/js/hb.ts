@@ -22,6 +22,7 @@ class Snows {
     maxSize: 100,
     minSpeed: 1,
     maxSpeed: 5,
+    el:''
   }
 
   private nowsArr: Array<Drops> = []
@@ -63,7 +64,13 @@ class Snows {
   private remove() {
     var allLi = document.querySelectorAll('.flake_snow')
     for (var a = 0; a < allLi.length; a++) {
-      document.body.removeChild(allLi[a])
+      let el = document.getElementById(this.options.el)
+      if (el) {
+        el.removeChild(allLi[a])
+      }else{
+        document.body.removeChild(allLi[a])
+      }
+     
     }
   }
 

@@ -28,6 +28,7 @@ var Snows = /** @class */ (function () {
             maxSize: 100,
             minSpeed: 1,
             maxSpeed: 5,
+            el: ''
         };
         this.nowsArr = [];
         this.options = __assign({}, this.options, options);
@@ -64,7 +65,13 @@ var Snows = /** @class */ (function () {
     Snows.prototype.remove = function () {
         var allLi = document.querySelectorAll('.flake_snow');
         for (var a = 0; a < allLi.length; a++) {
-            document.body.removeChild(allLi[a]);
+            var el = document.getElementById(this.options.el);
+            if (el) {
+                el.removeChild(allLi[a]);
+            }
+            else {
+                document.body.removeChild(allLi[a]);
+            }
         }
     };
     return Snows;
