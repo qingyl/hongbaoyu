@@ -69,9 +69,11 @@ class Snows {
 
 }
 
+// 红包对象
 class Drops {
   constructor(options) {
     this.options = options
+    this.resize()
     this.obj = {
       _x: random(1, _elWidth),
       _y: random(1, _elHeight),
@@ -80,14 +82,13 @@ class Drops {
       _stepSize: random(1, 10) / 100,
       _speed: random(this.options.minSpeed, this.options.maxSpeed)
     }
-    this.resize()
+   
     this.init()
   }
-  private flake
+  private flake;
   private obj;
   private options
   private step: number = 0
-  // private options:Object;
   private init() {
     if (this.options.images) {
       this.flake = document.createElement("img");
@@ -150,7 +151,6 @@ class Drops {
   private resize() {
   
     window.addEventListener("resize",  ()=> {
-      console.log(_elWidth)
       _elWidth = document.body.offsetWidth
       _elHeight = document.body.offsetHeight
       _fontsize = _elWidth > 750 ? 1 : _elWidth / 7.5
